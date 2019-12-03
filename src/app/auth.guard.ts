@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 
 import { LoginService } from './services/login.service';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +14,8 @@ export class AuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if (this.loginService.isLoggedIn == true) {
+
+      if (this.loginService.currentUserValue) {
         return true;
       }
       else {

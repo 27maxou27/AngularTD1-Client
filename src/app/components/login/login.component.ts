@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
   returnUrl: string;
   submitted: boolean = false;
   loading: boolean = false;
+  alert : boolean = false;
 
   constructor(private loginService: LoginService, private router: Router) { }
 
@@ -40,11 +41,19 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.f.username.value, this.f.password.value)
       .subscribe(
         data => {
+          console.log(data);
+          // Save user info...
           this.router.navigate(["/home"]);
         },
         err => {
           // TODO: Handle error...
+          this.submitted = false;
           this.loading = false;
+          this.f.username.setErrors({'incorrect': true});
+          this.f.password.setErrors({'incorrect': true});
+
+          this.alert = true;
+          setTimeout(() => { this.alert = false; }, 5000);
         }
       );
   }

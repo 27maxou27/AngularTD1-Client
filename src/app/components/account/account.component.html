@@ -1,1 +1,23 @@
-<p>account works!</p>
+<div id="title">
+    <h2>Mon Compte</h2>
+</div>
+
+<div id="mon_compte">
+    <h3>MON COMPTE</h3>
+    <div id="general">
+        <h4>GENERAL</h4>
+        <label for="username">{{pseudo}}</label>
+    </div>
+
+    <div id="identite">
+        <h4>IDENTIE</h4>
+        <div class="form-group">
+                <label for="username">Pseudonyme:</label>
+                <input formControlName="lastname" type="text" class="form-control" id="lastname"
+                    [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }">
+                <input type="submit" value="Enregistrer les modifications">
+        </div>
+    </div>
+
+
+</div>

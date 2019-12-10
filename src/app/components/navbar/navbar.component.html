@@ -25,6 +25,9 @@
           <li *ngIf="!authGuard.canActivate()" class="nav-item">
             <a class="nav-link" routerLink="/login" routerLinkActive="active">Connexion</a>
           </li>
+          <li *ngIf="authGuard.canActivate()" class="nav-item">
+            <a class="nav-link" (click)="logout()" routerLink="#" routerLinkActive="active">Deconnexion</a>
+          </li>
         </ul>
       </div>
     </nav>

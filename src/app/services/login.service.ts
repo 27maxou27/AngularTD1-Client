@@ -8,6 +8,7 @@ import { User } from '../models/user';
 @Injectable({
   providedIn: 'root'
 })
+
 export class LoginService {
 
   private apiUrl: string = "http://localhost:3000/login";
@@ -16,7 +17,7 @@ export class LoginService {
   public currentUser: Observable<User>;
 
   constructor(private httpClient: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('loggedInUser')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
 

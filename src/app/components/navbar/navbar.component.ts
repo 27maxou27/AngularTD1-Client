@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { AuthGuard } from '../../auth.guard';
 
@@ -9,9 +10,14 @@ import { AuthGuard } from '../../auth.guard';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private authGuard: AuthGuard) { }
+  constructor(private authGuard: AuthGuard, private router: Router) { }
 
   ngOnInit() {
+  }
+
+  logout() {
+    this.authGuard.logout();
+    this.router.navigate(["/login"]);
   }
 
 }

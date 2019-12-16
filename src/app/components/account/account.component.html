@@ -2,22 +2,46 @@
     <h2>Mon Compte</h2>
 </div>
 
-<div id="mon_compte">
-    <h3>MON COMPTE</h3>
-    <div id="general">
-        <h4>GENERAL</h4>
-        <label for="username">{{pseudo}}</label>
-    </div>
-
-    <div id="identite">
-        <h4>IDENTIE</h4>
-        <div class="form-group">
-                <label for="username">Pseudonyme:</label>
-                <input formControlName="lastname" type="text" class="form-control" id="lastname"
-                    [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }">
-                <input type="submit" value="Enregistrer les modifications">
+<div id="form">
+    <!-- <h3>MON COMPTE</h3> -->
+    <div id="general" >
+        <div class="row justify-content-between bg-primary" id="tab0">
+            <h4 class="bg-primary">GENERAL</h4>
         </div>
+    <label for="username">{{pseudo}}</label>
     </div>
-
-
 </div>
+
+    <div id="form">
+            <div class="row justify-content-between bg-primary" id="tab1">
+                    <div class="col-4">
+                        <h4 class="bg-primary">IDENTITE</h4>
+                    </div>
+                    <div class="col-4">
+                        <input type="button" id="btn1" value="[edit]" (click)="show = !show"/> 
+                    </div>
+            </div>
+      
+        <!-- <h4 class="bg-primary">IDENTITE
+        <input type="button" class="btn btn-edit" value="[edit]"/> 
+        </h4>  -->
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="form-group" >
+                <label *ngIf="!show" for="lastname">Nom: {{ln}}</label>
+                <label *ngIf="show" for="lastname">Nom: </label>
+                <input *ngIf="show" formControlName="nom" type="text" class="form-control" id="nom"
+                    [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }">
+            </div>
+
+            <div class="form-group">
+                <label *ngIf="!show" for="firstname">Prenom: {{fn}}</label>
+                <label *ngIf="show" for="lastname">Prenom: </label>
+                <input  *ngIf="show" formControlName="prenom" type="text" class="form-control" id="prenom"
+                    [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }">
+            </div>
+            <div class="form-group">
+                <button *ngIf="show" type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+            </div>
+        </form>
+
+    </div>

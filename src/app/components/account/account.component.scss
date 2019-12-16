@@ -1,0 +1,38 @@
+#form {
+    margin-top: 25px;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.bnt1 {
+    margin-top: -2px;
+}
+
+h2 {
+    background-color: #007BFF;
+    width: 200px;
+    border-radius: 5px;
+    margin-left: 42%;
+    margin-top: -5px;
+    color: white;
+}
+
+.title {
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+h4, #tab1, #tab0{
+    background-color: #007BFF;
+    color: white;
+    padding-left: 10px;
+    // padding-bottom: 3px;
+    border-radius: 8px;
+    
+}
+
+
+
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+ }

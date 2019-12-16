@@ -10,6 +10,9 @@ import { LoginService } from '../../services/login.service';
 })
 export class AccountComponent implements OnInit {
   pseudo : string
+  ln : string
+  fn : string
+  submitted: boolean = false;
   
 
   loginForm = new FormGroup ({
@@ -27,11 +30,11 @@ export class AccountComponent implements OnInit {
     var user = this.loginService.currentUserValue;
 
     this.pseudo = user.pseudo;
-
-    
-    
-    
-    
+    this.fn = user.prenom;
+    this.ln = user.nom;
   }
+  onSubmit() {
+    this.loginService.edit(this.f.prenom.value,this.f.nom.value,this.f.token.value);
+    }
 
 }

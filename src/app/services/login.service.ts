@@ -11,7 +11,7 @@ import { User } from '../models/user';
 
 export class LoginService {
 
-  private apiUrl: string = "http://localhost:3000/login";
+  private apiUrl: string = "http://localhost:3000";
   
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
@@ -27,7 +27,9 @@ export class LoginService {
 
   login(pseudo: string, password: string): Observable<any> {
 
-    return this.httpClient.post<any>(this.apiUrl, { pseudo, password })
+  
+
+    return this.httpClient.post<any>(this.apiUrl + "/login", { pseudo, password })
       .pipe(map(user => {
         if (user && user.token) {
           localStorage.setItem("loggedInUser", JSON.stringify(user));
@@ -36,6 +38,10 @@ export class LoginService {
 
         return (user);
       }))
+  }
+
+  edit(nom : string, prenom : string, token: string){
+    return this.httpClient.post<any>(this.apiUrl + "/edit",{nom,prenom,token})
   }
 
   logout(): void {
